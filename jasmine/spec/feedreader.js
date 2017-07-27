@@ -25,31 +25,26 @@ $(function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
-
         /* DONE: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
         it('all have their urls defined and their urls is not empty', function() {
             allFeeds.forEach(function(feed) {
                expect(feed.url).toBeDefined();
                expect(feed.url).not.toBe('');
             });
         });
-
         /* DONE: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-
         it('all have their name defined and their name is not empty', function() {
             allFeeds.forEach(function(feed) {
                expect(feed.name).toBeDefined();
                expect(feed.name).not.toBe('');
             });
         });
-
     });
 
     /* DONE: Write a new test suite named "The menu" */
@@ -62,7 +57,6 @@ $(function() {
         it('is hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-
          /* DONE: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
@@ -85,9 +79,7 @@ $(function() {
                 expect(isMenuHidden()).toBe(true);
                 menuIcon.click();
             }
-
         });
-
     });
 
     /* DONE: Write a new test suite named "Initial Entries" */
@@ -105,9 +97,6 @@ $(function() {
         it('are present', function() {
             expect($('.feed').children().length).toBeGreaterThan(0);
         });
-
-
-
 
     });
 
