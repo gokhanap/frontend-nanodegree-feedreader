@@ -104,8 +104,11 @@ $(function() {
          */
         var recentFirstFeed;
 
-        beforeEach(function() {
-            recentFirstFeed = $('.entry-link:first-of-type').html();
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                recentFirstFeed = $('.entry-link:first-of-type').html();
+                done();
+            });
         });
 
         it('loads content for ' + allFeeds[3].name, function(done) {
