@@ -70,15 +70,10 @@ $(function() {
                 return $('body').hasClass('menu-hidden');
             }
 
-            if (isMenuHidden()) {
-                menuIcon.click();
-                expect(isMenuHidden()).toBe(false);
-                menuIcon.click();
-            } else {
-                menuIcon.click();
-                expect(isMenuHidden()).toBe(true);
-                menuIcon.click();
-            }
+            menuIcon.click();
+            expect(isMenuHidden()).toBe(false);
+            menuIcon.click();
+            expect(isMenuHidden()).toBe(true);
         });
     });
 
@@ -95,7 +90,7 @@ $(function() {
         });
 
         it('are present', function() {
-            expect($('.feed').children().length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
 
     });
@@ -107,30 +102,40 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var recentContent;
+        var recentFirstFeed;
 
         beforeEach(function() {
-            recentFirstFeed = $('.entry-link:first-of-type');
+            recentFirstFeed = $('.entry-link:first-of-type').html();
         });
 
         it('loads content for ' + allFeeds[3].name, function(done) {
-            loadFeed(3, done);
-            expect($('.entry-link:first-of-type')).not.toBe(recentFirstFeed);
+            loadFeed(3, function() {
+                expect($('.entry-link:first-of-type').html()).not.toBe(recentFirstFeed);
+                done();
+            });
         });
 
         it('loads content for ' + allFeeds[2].name, function(done) {
-            loadFeed(2, done);
-            expect($('.entry-link:first-of-type')).not.toBe(recentFirstFeed);
+            loadFeed(2, function() {
+                expect($('.entry-link:first-of-type').html()).not.toBe(recentFirstFeed);
+                done();
+            });
         });
 
+        /* DISABLED: for efficiency (review suggestion)
         it('loads content for ' + allFeeds[1].name, function(done) {
-            loadFeed(1, done);
-            expect($('.entry-link:first-of-type')).not.toBe(recentFirstFeed);
+            loadFeed(1, function() {
+                expect($('.entry-link:first-of-type').html()).not.toBe(recentFirstFeed);
+                done();
+            });
         });
 
         it('loads content for ' + allFeeds[0].name, function(done) {
-            loadFeed(0, done);
-            expect($('.entry-link:first-of-type')).not.toBe(recentFirstFeed);
+            loadFeed(0, function() {
+                expect($('.entry-link:first-of-type').html()).not.toBe(recentFirstFeed);
+                done();
+            });
         });
+        */
     });
 }());
