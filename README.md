@@ -1,4 +1,6 @@
-# Feedreader Testing: Udacity feedreader project
+![Feedreader Testing preview](https://gokhanapaydin.com/img/project5_1200.jpg)
+
+# Feedreader Testing Project
 
 This is a feedreader testing project for udacity front-end web developer nanodegree program.
 
